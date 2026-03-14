@@ -1,6 +1,6 @@
-# Báo cáo Tuần 01
+# Báo cáo Tuần 02
 
-**Tuần:** 01 (01/03/2026 - 08/03/2026)
+**Tuần:** 02 (08/03/2026 - 15/03/2026)
 
 **Nhóm:** [3]
 
@@ -21,7 +21,7 @@
 ## 2. Tiến độ tổng thể
 | Hạng mục | Trạng thái | % |
 |----------|------------|---|
-| EDA | Đang làm | 0% |
+| EDA | Đang làm | 100% |
 | Preprocessing + Pipeline | Chưa | 0% |
 | Modeling (≥3 models, wandb) | Chưa | 0% |
 | Model Persistence | Chưa | 0% |
@@ -39,5 +39,5 @@
 | Phan Đình Vũ | Dựng base Backend |
 | Nguyễn Văn Công | EDA|
 ---
-*Ngày nộp: 13/03/2026*
+*Ngày nộp: 14/03/2026*
 *Xác nhận của Nhóm trưởng: [Nguyễn Ngọc Đô]*
