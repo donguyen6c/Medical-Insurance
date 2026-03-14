@@ -9,12 +9,12 @@
 **Nhóm trưởng:** [Nguyễn Ngọc Đô] - [2351050032]
 ---
 ## 1. Công việc đã hoàn thành
-| Thành viên | MSSV | Công việc                                                            | Link Commit/PR |
-|------------|------|----------------------------------------------------------------------|----------------|
-| Nguyễn Ngọc Đô | 2351050032 | Thành lập nhóm, chọn đề tài , phân công                              | [Link](https://github.com/donguyen6c/Medical-Insurance/commit/587b6c45f78eba68bd7f08f93be89fc18b4815ac)|
-| Phan Đình Vũ | 2351050203 | Thành lập nhóm, chọn đề tài  , phân công                             | [Link](https://github.com/donguyen6c/Medical-Insurance/commit/c409c083a962c28aab0218f212484f715dff5db0) |
-| Huỳnh Văn Hoàng | 2354120047 | Init Project                                                         | [Link](https://github.com/donguyen6c/Medical-Insurance/commit/c409c083a962c28aab0218f212484f715dff5db0)|
-| Nguyễn Văn Công | 2351050016 | Phân tích biến số(Biểu đồ 2 & 3), Phân tích biến phân loại(Biểu đồ 4)| [Link](https://github.com/donguyen6c/Medical-Insurance/commit/a5d896ff4e3f2ebff5be68b62a055a6d48dc19ff)|
+| Thành viên | MSSV | Công việc                                                                       | Link Commit/PR |
+|------------|------|---------------------------------------------------------------------------------|----------------|
+| Nguyễn Ngọc Đô | 2351050032 | Phân tích biến mục tiêu(Biểu đồ 1)                                              | [Link](https://github.com/donguyen6c/Medical-Insurance/commit/fecef15d9a432efdbc3abe067d492a9f5f38996a)|
+| Phan Đình Vũ | 2351050203 | Đánh giá ảnh hưởng của các biến đến Target(Biểu đồ 5 & 6)                      | [Link](https://github.com/donguyen6c/Medical-Insurance/commit/d15650d20bae06e561b4b78d6d4a90b20629c042) |
+| Huỳnh Văn Hoàng | 2354120047 | Phát hiện ngoại lệ(Biểu đồ 7), Phân tích tương quan(Biểu đồ 8), Thống kê suy diễn | [Link](https://github.com/donguyen6c/Medical-Insurance/commit/bd229f60cc0ee1f59cbb5f45120b9ca0c3706f20)|
+| Nguyễn Văn Công | 2351050016 | Phân tích biến số(Biểu đồ 2 & 3), Phân tích biến phân loại(Biểu đồ 4)           | [Link](https://github.com/donguyen6c/Medical-Insurance/commit/a5d896ff4e3f2ebff5be68b62a055a6d48dc19ff)|
 
 
 ---
