@@ -25,7 +25,7 @@ Dataset: Medical Cost Personal Datasets từ Kaggle.
 ### Chạy Notebook
 jupyter notebook notebooks/project_analysis.ipynb
 ### Chạy Backend
-cd backend && pip install -r requirements.txt && python app/main.py
+cd backend\app && pip install -r requirements.txt && uvicorn main:app --reload
 ### Chạy Frontend
 cd frontend && npm install && npm start
 ### Truy cập
