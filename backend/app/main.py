@@ -1,10 +1,33 @@
-from fastapi import FastAPI
-from app.routers.predict import router as predict_router
+from fastapi import FastAPI, HTTPException
+from schemas import InputData
+from model_loader import load_model
+from services import predict_charges
 
-app = FastAPI(title="Medical Insurance API", version="1.0.0")
+app = FastAPI(title="AI Prediction API")
 
-app.include_router(predict_router, prefix="/api", tags=["Prediction"])
+model = load_model()
+
 
 @app.get("/")
-def root():
-    return {"message": "API is running"}
+def home():
+    return {
+        "status": "running",
+        "model_loaded": model is not None
+    }
+
+
+@app.post("/predict")
+def predict(data: InputData):
+    if model is None:
+        raise HTTPException(status_code=500, detail="Model chưa load")
+
+    try:
+        result = predict_charges(model, data)
+
+        return {
+            "success": True,
+            "prediction": result
+        }
+
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
