@@ -7,7 +7,7 @@ const initialForm = {
   age: "",
   sex: "male",
   bmi: "",
-  children: "0",
+  children: "",
   smoker: "no",
   region: "southeast",
 };
@@ -17,6 +17,7 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
   const [error, setError] = useState("");
+  const [errors, setErrors] = useState({});
 
   const payload = useMemo(() => {
     return {
@@ -43,23 +44,48 @@ export default function App() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     setForm((prev) => ({
       ...prev,
       [name]: value,
     }));
+
+    setErrors((prev) => ({
+      ...prev,
+      [name]: "",
+    }));
+
+    setError("");
   };
 
   const handleReset = () => {
     setForm(initialForm);
     setResult(null);
     setError("");
+    setErrors({});
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
+
+    let newErrors = {};
+
+    if (form.age === "") newErrors.age = "Vui lòng nhập Age";
+    if (form.age <= 0) newErrors.age = "Tuổi không được bé hơn 1";
+    if (form.bmi === "") newErrors.bmi = "Vui lòng nhập BMI";
+    if (form.bmi < 0) newErrors.bmi = "BMI không được âm";
+    if (form.children === "") newErrors.children = "Vui lòng nhập Children";
+    if (form.children < 0) newErrors.children = "Con không được phép âm";
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      setError("Vui lòng nhập đủ dữ liệu trước khi predict");
+      return;
+    }
+
+    setErrors({});
     setError("");
-    setResult(null);
+    setLoading(true);
 
     try {
       const response = await fetch(API_URL, {
@@ -109,8 +135,8 @@ export default function App() {
           <div className="stat-card">
             <span className="stat-label">Prediction</span>
             <strong>
-              {result?.prediction  !== undefined
-                ? `$${Number(result.prediction ).toLocaleString()}`
+              {result?.prediction !== undefined
+                ? `$${Number(result.prediction).toLocaleString()}`
                 : "Waiting"}
             </strong>
           </div>
@@ -123,7 +149,8 @@ export default function App() {
 
         <div className="layout">
           <div className="panel">
-            <h2>Customer Information</h2>
+            <h2 style={{color:'black'}}>Customer Information</h2>
+
             <form className="form-grid" onSubmit={handleSubmit}>
               <div className="form-group">
                 <label>Age</label>
@@ -134,11 +161,12 @@ export default function App() {
                   onChange={handleChange}
                   placeholder="Nhập vào tuổi"
                 />
+                {errors.age && <div className="field-error">{errors.age}</div>}
               </div>
 
               <div className="form-group">
                 <label>Sex</label>
-                <select name="sex" value={form.sex} onC hange={handleChange}>
+                <select name="sex" value={form.sex} onChange={handleChange}>
                   <option value="male">Male</option>
                   <option value="female">Female</option>
                 </select>
@@ -152,8 +180,9 @@ export default function App() {
                   name="bmi"
                   value={form.bmi}
                   onChange={handleChange}
-                  placeholder="Nhập vào MBI"
+                  placeholder="Nhập vào BMI"
                 />
+                {errors.bmi && <div className="field-error">{errors.bmi}</div>}
               </div>
 
               <div className="form-group">
@@ -163,8 +192,11 @@ export default function App() {
                   name="children"
                   value={form.children}
                   onChange={handleChange}
-                  placeholder="Là trẻ con hay không (0-1)"
+                  placeholder="Nhập số con"
                 />
+                {errors.children && (
+                  <div className="field-error">{errors.children}</div>
+                )}
               </div>
 
               <div className="form-group">
@@ -200,7 +232,7 @@ export default function App() {
             <h2>Request Preview</h2>
             <pre className="code-block">{JSON.stringify(payload, null, 2)}</pre>
 
-            <h2 style={{ marginTop: "24px" }}>Prediction Result</h2>
+            <h2 style={{ marginTop: "24px", color: "black" }}>Prediction Result</h2>
 
             {error && <div className="error-box">{error}</div>}
 
