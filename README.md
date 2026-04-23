@@ -29,11 +29,11 @@ cd backend\app && pip install -r requirements.txt && uvicorn main:app --reload
 ### Chạy Frontend
 cd frontend && npm install && npm start
 ### Truy cập
-- Frontend: http://localhost:3000
-- API: http://localhost:5000 (hoặc port tương ứng)
+- Frontend: http://127.0.0.1:5173
+- API: http://127.0.0.1:8000
 ## Demo
-- wandb: [link]
-- Screenshot/video: [link hoặc mô tả]
+- wandb: [\[link\]](https://wandb.ai/ngocdo5852-dai-hoc-mo/Medical-Insurance-Cost-Prediction/workspace?nw=nwuserngocdo5852)
+- Screenshot/video: [\[link\]](https://drive.google.com/drive/folders/1YGvatTJX8CAGA9UtTHxG-MPGFOg2yKDa?usp=sharing)
 ## Nộp bài
 - Báo cáo: report/report.pdf
 - wandb link: wandb_link.txt
