@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import "./App.css";
+import History from "./History";
 
 const API_URL = "http://127.0.0.1:8000/predict";
 
@@ -13,6 +14,7 @@ const initialForm = {
 };
 
 export default function App() {
+  const [screen, setScreen] = useState("home");
   const [form, setForm] = useState(initialForm);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
@@ -71,11 +73,14 @@ export default function App() {
     let newErrors = {};
 
     if (form.age === "") newErrors.age = "Vui lòng nhập Age";
-    if (form.age <= 0) newErrors.age = "Tuổi không được bé hơn 1";
+    else if (Number(form.age) <= 0) newErrors.age = "Tuổi không được bé hơn 1";
+
     if (form.bmi === "") newErrors.bmi = "Vui lòng nhập BMI";
-    if (form.bmi < 0) newErrors.bmi = "BMI không được âm";
+    else if (Number(form.bmi) < 0) newErrors.bmi = "BMI không được âm";
+
     if (form.children === "") newErrors.children = "Vui lòng nhập Children";
-    if (form.children < 0) newErrors.children = "Con không được phép âm";
+    else if (Number(form.children) < 0)
+      newErrors.children = "Con không được phép âm";
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -110,6 +115,10 @@ export default function App() {
     }
   };
 
+  if (screen === "history") {
+    return <History onBack={() => setScreen("home")} />;
+  }
+
   return (
     <div className="page">
       <div className="container">
@@ -119,6 +128,14 @@ export default function App() {
             Nhập thông tin khách hàng để gửi dữ liệu lên FastAPI và nhận kết quả
             dự đoán chi phí bảo hiểm.
           </p>
+
+          <button
+            type="button"
+            className="secondary-btn"
+            onClick={() => setScreen("history")}
+          >
+            Xem lịch sử
+          </button>
         </div>
 
         <div className="stats">
@@ -149,7 +166,7 @@ export default function App() {
 
         <div className="layout">
           <div className="panel">
-            <h2 style={{color:'black'}}>Customer Information</h2>
+            <h2 style={{ color: "black" }}>Customer Information</h2>
 
             <form className="form-grid" onSubmit={handleSubmit}>
               <div className="form-group">
@@ -221,6 +238,7 @@ export default function App() {
                 <button type="submit" className="primary-btn" disabled={loading}>
                   {loading ? "Predicting..." : "Predict Charge"}
                 </button>
+
                 <button type="button" className="secondary-btn" onClick={handleReset}>
                   Reset
                 </button>
@@ -232,7 +250,9 @@ export default function App() {
             <h2>Request Preview</h2>
             <pre className="code-block">{JSON.stringify(payload, null, 2)}</pre>
 
-            <h2 style={{ marginTop: "24px", color: "black" }}>Prediction Result</h2>
+            <h2 style={{ marginTop: "24px", color: "black" }}>
+              Prediction Result
+            </h2>
 
             {error && <div className="error-box">{error}</div>}
 
