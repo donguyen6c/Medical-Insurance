@@ -28,9 +28,9 @@ jupyter notebook notebooks/project_analysis.ipynb
 Trong MySQL: CREATE DATABASE ai_prediction_db;
 Trong Project: cd backend && pip install -r requirements.txt && uvicorn main:app --reload
 ### Chạy Frontend
-cd frontend && npm install && npm start
+cd ./frontend/medical-dashboard && npm install && npm run dev
 ### Truy cập
-- Frontend: http://127.0.0.1:5173
+- Frontend: http://localhost:5173/
 - API: http://127.0.0.1:8000
 ## Demo
 - wandb: [\[link\]](https://wandb.ai/ngocdo5852-dai-hoc-mo/Medical-Insurance-Cost-Prediction/workspace?nw=nwuserngocdo5852)
